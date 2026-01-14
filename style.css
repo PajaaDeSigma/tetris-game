@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #474747;
+    background: #D3D3D3;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -29,6 +29,25 @@ body {
     padding: 15px;
     border-radius: 8px;
     border: 3px solid #00ff00;
+}
+
+/* Responsive music controls for mobile */
+@media (max-width: 767px) {
+    #musicControls {
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        border-width: 2px;
+    }
+    
+    #musicControls button {
+        padding: 8px 15px;
+        font-size: 7px;
+    }
+    
+    .music-info {
+        font-size: 7px;
+    }
 }
 
 #musicControls button {

@@ -105,9 +105,16 @@ var colors = [
 ];
 
 function setup() {
-    // Fixed canvas sizing - 720x720px
-    canvasWidth = 720;
-    canvasHeight = 720;
+    // Responsive canvas sizing for mobile and desktop
+    if (windowWidth < 768) {
+        // Mobile: smaller canvas, portrait orientation
+        canvasWidth = min(windowWidth * 0.95, 400);
+        canvasHeight = min(windowHeight * 0.85, 600);
+    } else {
+        // Desktop/Laptop: 720x720px
+        canvasWidth = 720;
+        canvasHeight = 720;
+    }
     
     // Calculate game edges based on canvas width
     gameEdgeLeft = canvasWidth * 0.25;
@@ -122,25 +129,32 @@ function setup() {
 }
 
 function windowResized() {
-    // Keep fixed size even on window resize
-    canvasWidth = 720;
-    canvasHeight = 720;
+    // Responsive resize for mobile and desktop
+    if (windowWidth < 768) {
+        // Mobile: adjust to screen size
+        canvasWidth = min(windowWidth * 0.95, 400);
+        canvasHeight = min(windowHeight * 0.85, 600);
+    } else {
+        // Desktop/Laptop: keep 720x720px
+        canvasWidth = 720;
+        canvasHeight = 720;
+    }
     gameEdgeLeft = canvasWidth * 0.25;
     gameEdgeRight = canvasWidth * 0.75;
     resizeCanvas(canvasWidth, canvasHeight);
 }
 
 function draw() {
-    // Dark grey background
-    background('#474747');
+    // Light grey background
+    background('#D3D3D3');
     
     // Game play area (middle)
     fill('#1a1a1a');
     noStroke();
     rect(gameEdgeLeft, 0, gameEdgeRight - gameEdgeLeft, height);
     
-    // Side panels
-    fill('#474747');
+    // Side panels - light grey
+    fill('#D3D3D3');
     rect(0, 0, gameEdgeLeft, height);
     rect(gameEdgeRight, 0, canvasWidth - gameEdgeRight, height);
     
