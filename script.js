@@ -1,5 +1,3 @@
-// script.js
-
 // Music controls
 let bgMusic;
 let musicPlaying = false;
@@ -134,7 +132,7 @@ function windowResized() {
 
 function draw() {
     // Dark grey background
-    background('#2a2a2a');
+    background('#474747');
     
     // Game play area (middle)
     fill('#1a1a1a');
@@ -142,7 +140,7 @@ function draw() {
     rect(gameEdgeLeft, 0, gameEdgeRight - gameEdgeLeft, height);
     
     // Side panels
-    fill('#1f1f1f');
+    fill('#474747');
     rect(0, 0, gameEdgeLeft, height);
     rect(gameEdgeRight, 0, canvasWidth - gameEdgeRight, height);
     
