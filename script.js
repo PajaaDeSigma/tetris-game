@@ -1,3 +1,5 @@
+// script.js
+
 // Music controls
 let bgMusic;
 let musicPlaying = false;
@@ -16,10 +18,42 @@ bgMusic.addEventListener('ended', function() {
 }, false);
 
 bgMusic.addEventListener('error', function(e) {
-    console.log('Music file not found');
+    console.log('Music file not found. Please add music.mp3 to the music folder.');
     toggleBtn.textContent = 'NO MUSIC';
     toggleBtn.disabled = true;
 });
+
+// Auto play music when page loads
+window.addEventListener('load', function() {
+    // Try to autoplay music
+    bgMusic.play().then(() => {
+        musicPlaying = true;
+        toggleBtn.textContent = 'PAUSE';
+        toggleBtn.classList.remove('paused');
+        console.log('Music started automatically');
+    }).catch(e => {
+        // If autoplay is blocked by browser, show play button
+        console.log('Autoplay blocked. User interaction required:', e);
+        toggleBtn.textContent = 'PLAY';
+        toggleBtn.classList.add('paused');
+    });
+});
+
+// Also try to play on first user interaction (click anywhere on page)
+let firstInteraction = true;
+document.addEventListener('click', function() {
+    if (firstInteraction && !musicPlaying) {
+        bgMusic.play().then(() => {
+            musicPlaying = true;
+            toggleBtn.textContent = 'PAUSE';
+            toggleBtn.classList.remove('paused');
+            console.log('Music started on first interaction');
+        }).catch(e => {
+            console.log('Could not play music:', e);
+        });
+        firstInteraction = false;
+    }
+}, { once: true });
 
 toggleBtn.addEventListener('click', function() {
     if (musicPlaying) {
@@ -40,6 +74,7 @@ toggleBtn.addEventListener('click', function() {
 volumeSlider.addEventListener('input', function() {
     bgMusic.volume = this.value / 100;
 });
+
 // Game variables
 var gridSpace = 30;
 var fallingPiece;
@@ -72,9 +107,9 @@ var colors = [
 ];
 
 function setup() {
-    // Dynamic canvas sizing
-    canvasWidth = min(windowWidth * 0.9, 720);
-    canvasHeight = min(windowHeight * 0.9, 720);
+    // Fixed canvas sizing - 720x720px
+    canvasWidth = 720;
+    canvasHeight = 720;
     
     // Calculate game edges based on canvas width
     gameEdgeLeft = canvasWidth * 0.25;
@@ -89,8 +124,9 @@ function setup() {
 }
 
 function windowResized() {
-    canvasWidth = min(windowWidth * 0.9, 600);
-    canvasHeight = min(windowHeight * 0.9, 540);
+    // Keep fixed size even on window resize
+    canvasWidth = 720;
+    canvasHeight = 720;
     gameEdgeLeft = canvasWidth * 0.25;
     gameEdgeRight = canvasWidth * 0.75;
     resizeCanvas(canvasWidth, canvasHeight);
@@ -98,7 +134,7 @@ function windowResized() {
 
 function draw() {
     // Dark grey background
-    background('#474747');
+    background('#2a2a2a');
     
     // Game play area (middle)
     fill('#1a1a1a');
@@ -106,7 +142,7 @@ function draw() {
     rect(gameEdgeLeft, 0, gameEdgeRight - gameEdgeLeft, height);
     
     // Side panels
-    fill('#474747');
+    fill('#1f1f1f');
     rect(0, 0, gameEdgeLeft, height);
     rect(gameEdgeRight, 0, canvasWidth - gameEdgeRight, height);
     
@@ -243,8 +279,8 @@ function draw() {
         // Main text
         fill('#ff0000');
         textSize(canvasWidth > 400 ? 52 : 36);
-        text("GAME", width/5, height/5 - 30);
-        text("OVER!", width/5, height/5 + 30);
+        text("GAME", width/2, height/2 - 30);
+        text("OVER!", width/2, height/2 + 30);
         
         // Restart instruction
         fill('#ffffff');
