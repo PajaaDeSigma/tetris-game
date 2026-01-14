@@ -1,0 +1,70 @@
+/* style.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2a2a2a;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#gameContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#musicControls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    border: 3px solid #00ff00;
+}
+
+#musicControls button {
+    background: #00cc00;
+    border: 2px solid #00ff00;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+#musicControls button:hover {
+    background: #00ff00;
+    transform: scale(1.05);
+}
+
+#musicControls button.paused {
+    background: #cc0000;
+    border-color: #ff0000;
+}
+
+#volumeControl {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.music-info {
+    color: #00ff00;
+    font-size: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
