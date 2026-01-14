@@ -1,3 +1,5 @@
+/* style.css */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -9,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #D3D3D3;
+    background: #2a2a2a;
     font-family: 'Press Start 2P', cursive;
 }
 
