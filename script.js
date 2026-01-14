@@ -145,16 +145,16 @@ function windowResized() {
 }
 
 function draw() {
-    // Dark grey background
-    background('#2a2a2a');
+    // Dark grey background #3A3A3A
+    background('#3A3A3A');
     
     // Game play area (middle)
     fill('#1a1a1a');
     noStroke();
     rect(gameEdgeLeft, 0, gameEdgeRight - gameEdgeLeft, height);
     
-    // Side panels - dark grey
-    fill('#2a2a2a');
+    // Side panels - dark grey #3A3A3A
+    fill('#3A3A3A');
     rect(0, 0, gameEdgeLeft, height);
     rect(gameEdgeRight, 0, canvasWidth - gameEdgeRight, height);
     
