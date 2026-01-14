@@ -1,5 +1,3 @@
-// script.js
-
 // Music controls
 let bgMusic;
 let musicPlaying = false;
@@ -18,7 +16,7 @@ bgMusic.addEventListener('ended', function() {
 }, false);
 
 bgMusic.addEventListener('error', function(e) {
-    console.log('Music file not found. Please add music.mp3 to the music folder.');
+    console.log('Music file not found');
     toggleBtn.textContent = 'NO MUSIC';
     toggleBtn.disabled = true;
 });
@@ -75,8 +73,8 @@ var colors = [
 
 function setup() {
     // Dynamic canvas sizing
-    canvasWidth = min(windowWidth * 0.9, 600);
-    canvasHeight = min(windowHeight * 0.9, 540);
+    canvasWidth = min(windowWidth * 0.9, 720);
+    canvasHeight = min(windowHeight * 0.9, 720);
     
     // Calculate game edges based on canvas width
     gameEdgeLeft = canvasWidth * 0.25;
@@ -100,7 +98,7 @@ function windowResized() {
 
 function draw() {
     // Dark grey background
-    background('#2a2a2a');
+    background('#474747');
     
     // Game play area (middle)
     fill('#1a1a1a');
@@ -108,7 +106,7 @@ function draw() {
     rect(gameEdgeLeft, 0, gameEdgeRight - gameEdgeLeft, height);
     
     // Side panels
-    fill('#1f1f1f');
+    fill('#474747');
     rect(0, 0, gameEdgeLeft, height);
     rect(gameEdgeRight, 0, canvasWidth - gameEdgeRight, height);
     
@@ -245,8 +243,8 @@ function draw() {
         // Main text
         fill('#ff0000');
         textSize(canvasWidth > 400 ? 52 : 36);
-        text("GAME", width/2, height/2 - 30);
-        text("OVER!", width/2, height/2 + 30);
+        text("GAME", width/5, height/5 - 30);
+        text("OVER!", width/5, height/5 + 30);
         
         // Restart instruction
         fill('#ffffff');
