@@ -1,5 +1,3 @@
-// script.js
-
 // Music controls
 let bgMusic;
 let musicPlaying = false;
